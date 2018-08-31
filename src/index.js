@@ -32,15 +32,10 @@ const save = key => {
   localStorage.setItem(key, data[key]);
 };
 
-const addListeners = (nodeList, event, handler) => {
+const arrayListeners = (type, nodeList, event, handler) => {
   Array.from(nodeList).forEach(element => {
-    element.addEventListener(event, handler);
-  });
-};
-
-const removeListeners = (nodeList, event, handler) => {
-  Array.from(nodeList).forEach(element => {
-    element.removeEventListener(event, handler);
+    if (type === 'add') element.addEventListener(event, handler);
+    else element.removeEventListener(event, handler);
   });
 };
 
@@ -89,37 +84,42 @@ const renderScores = changed => {
   }
 };
 
-const playGame = (playerType, playerChoice) => {
-  if (playerType !== 'user' || playerType !== 'com' || choices.includes(playerChoice)) return;
-  const player1Choice = playerType === 'user' ? playerChoice : getRandomChoice(choices);
-  const player2Choice = getRandomChoice(choices);
-  const winner = getWinner(player1Choice, player2Choice, config);
+const renderShowBoard = (scoreType, winning, losing, changedScore) => {
+  data[scoreType] = parseInt(data[scoreType], 10) + 1;
+  winningElement = winning;
+  losingElement = losing;
+  renderScores(changedScore);
+};
+
+const renderWinner = (winner, player1Element, player2Element) => {
   removeStyle();
   switch (winner) {
     case -1:
       alert('not valid input'); // eslint-disable-line no-alert
       break;
     case 0:
-      data.tiesScore = parseInt(data.tiesScore, 10) + 1;
-      winningElement = player1Choices[choices.indexOf(player1Choice)];
-      losingElement = player2Choices[choices.indexOf(player2Choice)];
-      renderScores('tie');
+      renderShowBoard('tiesScore', player1Element, player2Element, 'tie');
       break;
     case 1:
-      data.player1Score = parseInt(data.player1Score, 10) + 1;
-      winningElement = player1Choices[choices.indexOf(player1Choice)];
-      losingElement = player2Choices[choices.indexOf(player2Choice)];
-      renderScores('player1');
+      renderShowBoard('player1Score', player1Element, player2Element, 'player1');
       break;
     case 2:
-      data.player2Score = parseInt(data.player2Score, 10) + 1;
-      winningElement = player2Choices[choices.indexOf(player2Choice)];
-      losingElement = player1Choices[choices.indexOf(player1Choice)];
-      renderScores('player2');
+      renderShowBoard('player2Score', player2Element, player1Element, 'player2');
       break;
     default:
   }
   styleWinner();
+};
+
+const playGame = (playerType, playerChoice) => {
+  if ((playerType !== 'user' && playerType !== 'com') || (playerChoice && !choices.includes(playerChoice))) return;
+  const player1Choice = playerType === 'user' ? playerChoice : getRandomChoice(choices);
+  const player2Choice = getRandomChoice(choices);
+  const player1Element = player1Choices[choices.indexOf(player1Choice)];
+  const player2Element = player2Choices[choices.indexOf(player2Choice)];
+  const winner = getWinner(player1Choice, player2Choice, config);
+
+  renderWinner(winner, player1Element, player2Element);
 };
 
 const playHandler = e => {
@@ -157,7 +157,7 @@ const cVcRender = initalRender => {
   data.player1 = 'com';
   renderScores('all');
   save('player1');
-  removeListeners(player1Choices, 'click', playHandler);
+  arrayListeners('remove', player1Choices, 'click', playHandler);
   Array.from(player1Choices).forEach(choiceElement => {
     choiceElement.classList.remove('selectable');
   });
@@ -172,7 +172,7 @@ const pVcRender = initalRender => {
   renderScores('all');
   save('player1');
   save('player2');
-  addListeners(player1Choices, 'click', playHandler);
+  arrayListeners('add', player1Choices, 'click', playHandler);
   Array.from(player1Choices).forEach(choiceElement => {
     choiceElement.classList.add('selectable');
   });
@@ -181,7 +181,7 @@ const pVcRender = initalRender => {
 if (data.player1 === 'user') pVcRender(true);
 else cVcRender(true);
 
-addListeners(newGameButtons, 'click', reset);
+arrayListeners('add', newGameButtons, 'click', reset);
 
 watchButton.addEventListener('click', () => {
   cVcRender();
