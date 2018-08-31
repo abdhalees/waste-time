@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <title>Waste an Hour Having Fun</title>
+</head>
+
+<body>
+    <h1 class='title'>Waste an Hour Having Fun</h1>
+    <ul class='play-area'>
+        <li>
+            <ul class='player-area'>
+                <li>
+                    <p id='palyer1-title' class='showboard'></p>
+                </li>
+                <li>
+                    <p id='palyer1-score' class='showboard'>0</p>
+                </li>
+                <li>
+                    <ul class='player-choices'>
+                        <li class='choice player1-choice selectable' id='rock1' data-choice='rock'>
+                            <input type='image' class='choice-image' src="./assets/rock.png" alt="rock">
+                        </li>
+                        <li class='choice player1-choice selectable' id='paper1' data-choice='paper'>
+                            <input type='image' class='choice-image' src="./assets/paper.png" alt="paper">
+                        </li>
+                        <li class='choice player1-choice selectable' id='scissors1' data-choice='scissors'>
+                            <input type='image' class='choice-image' src="./assets/scissors.png" alt="scissors">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class='player-area'>
+                <li>
+                    <p id='ties-title' class='showboard'>Ties</p>
+                </li>
+                <li>
+                    <p class='showboard' id='ties-score'>0</p>
+                </li>
+                <li>
+                    <button class='btn com-vs-com-area' id='play'>Play</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class='player-area'>
+                <li>
+                    <p class='showboard' id='palyer2-title'></p>
+                </li>
+                <li>
+                    <p class='showboard' id='palyer2-score'>0</p>
+                </li>
+                <li>
+                    <ul class='player-choices'>
+                        <li class='choice player2-choice' id='rock2' data-choice='rock'>
+                            <img class='choice-image flipped' src="./assets/rock.png" alt="rock">
+                        </li>
+                        <li class='choice player2-choice' id='paper2' data-choice='paper'>
+                            <img class='choice-image flipped' src="./assets/paper.png" alt="paper">
+                        </li>
+                        <li class='choice player2-choice' id='scissors2' data-choice='scissors'>
+                            <img class='choice-image flipped' src="./assets/scissors.png" alt="scissors">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class='options-area' id='player-vs-com-area'>
+        <div class='message-with-a-button'>
+            <p>Are just too lazy and want to watch 2 computers play against each other?</p>
+            <button class='btn option-button' id='watch'> Watch</button>
+        </div>
+        <div class='message-with-a-button'>
+            <p>Or are you losing and want to start a new game?</p>
+            <button class='btn option-button new-game'> New Game</button>
+        </div>
+    </div>
+    <div class='options-area com-vs-com-area'>
+        <div class='message-with-a-button'>
+            <p>Feeling left out and want to play again?</p>
+            <button class='btn option-button' id='let-me-play'> Let Me Play</button>
+        </div>
+        <div class='message-with-a-button'>
+            <p>Do you want them to start over?</p>
+            <button class='btn option-button new-game'> New Game</button>
+        </div>
+    </div>
+
+    <script src="./bundle.js"></script>
+</body>
+
+</html>
