@@ -135,23 +135,16 @@ const reset = () => {
   renderScores('all');
 };
 
-const showcVcArea = () => {
-  Array.from(cVcArea).forEach(area => {
-    area.style.display = 'block'; // eslint-disable-line no-param-reassign
+const showArea = (cVcDisplay, pVcDisplay) => {
+  Array.from(cVcArea).forEach(element => {
+    element.style.display = cVcDisplay; // eslint-disable-line no-param-reassign
   });
-  pVcArea.style.display = 'none';
-};
-
-const showpVcArea = () => {
-  Array.from(cVcArea).forEach(area => {
-    area.style.display = 'none'; // eslint-disable-line no-param-reassign
-  });
-  pVcArea.style.display = 'block';
+  pVcArea.style.display = pVcDisplay;
 };
 
 const cVcRender = initalRender => {
   if (!initalRender) reset();
-  showcVcArea();
+  showArea('block', 'none');
   player1Title.innerText = 'Computer 1 Wins';
   player2Title.innerText = 'Computer 2 Wins';
   data.player1 = 'com';
@@ -165,7 +158,7 @@ const cVcRender = initalRender => {
 
 const pVcRender = initalRender => {
   if (!initalRender) reset();
-  showpVcArea();
+  showArea('none', 'block');
   player1Title.innerText = 'Player Wins';
   player2Title.innerText = 'Computer Wins';
   data.player1 = 'user';
