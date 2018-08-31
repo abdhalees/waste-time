@@ -32,7 +32,7 @@ As a bored lazy person I would like to:
 2. Install depndancies `npm install`
 3. Build the app `npm run build`
 4. Start the app `npm start`
-5. browse to: <htttp://localhost:4000>
+5. browse to: <http://localhost:4000>
 5. Waste Time
 
 ### Contributing
