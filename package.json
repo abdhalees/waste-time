@@ -10,7 +10,7 @@
     "start": "node app.js",
     "build": "browserify src/index.js -o public/bundle.js -t [ babelify --presets env ] ",
     "watch": "watchify src/index.js -o public/bundle.js -v -t [ babelify --presets env ] ",
-    "test": "nyc mocha --timeout 10000 --require babel-polyfill --require babel-register",
+    "test": "npm run build && nyc mocha --timeout 10000 --require babel-polyfill --require babel-register",
     "format": "prettier --list-different \"src/*.js\"",
     "lint": "eslint \"src/*.js\" --quiet",
     "detect": "jscpd -f \"src/*.js\" -e \"**/node_modules/**\""
