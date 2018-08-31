@@ -67,7 +67,7 @@ spock: {
 
 ### Stack:
 
-- Browserify and Babel: to transform es6 syntax to es5 for cross borwser support.
+- Browserify and Babel: for bundling and to transform es6 syntax to es5 for cross borwser support.
 - Mocha, Chai and Puppeteer: for end-to-end testing.
 - Prettier and Eslint: for code formatting and linting.
 - jscpd: for copy paste detection.
