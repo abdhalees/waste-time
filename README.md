@@ -1,3 +1,7 @@
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+<a href="https://codeclimate.com/github/abdhalees/waste-time/maintainability"><img src="https://api.codeclimate.com/v1/badges/c8235dbd2e655d08c420/maintainability" /></a>
+
+
 ## Waste an Hour Having Fun
 
 a rock paper scisossros game for lazy people wanting to waste time.
@@ -28,6 +32,7 @@ As a bored lazy person I would like to:
 2. Install depndancies `npm install`
 3. Build the app `npm run build`
 4. Start the app `npm start`
+5. browse to: <htttp://localhost:4000>
 5. Waste Time
 
 ### Contributing
@@ -56,13 +61,15 @@ spock: {
 
 - You could use the latest es6 syntax. as it's all transformed while building.
 
-- Becareful there is a precommit hook for code format, linter, copy paste detection and tests.
+- Becareful there is a precommit hook for code format, linter, copy paste detection and tests. 
+
+- check code quality after at: <https://codeclimate.com/github/abdhalees/waste-time>
 
 ### Stack:
 
 - Browserify and Babel: to transform es6 syntax to es5 for cross borwser support.
-- Mocha, Chai and Puppeteer: for end -to-end testing.
-- Prettier and Eslint : for code formatting and linting.
+- Mocha, Chai and Puppeteer: for end-to-end testing.
+- Prettier and Eslint: for code formatting and linting.
 - jscpd: for copy paste detection.
 - nyc: for code coverage.
 
